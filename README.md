@@ -214,7 +214,7 @@ See the [LICENSE-APACHE](https://github.com/CosmicHorrorDev/two-face/blob/HEAD/b
 
 ```kotlin
 dependencies {
-    implementation("io.github.kotlinmania:two-face-kotlin:0.1.0-SNAPSHOT")
+    implementation("io.github.kotlinmania:two-face-kotlin:0.1.0")
 }
 ```
 
