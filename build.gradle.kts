@@ -57,10 +57,18 @@ kotlin {
         binaries.framework { baseName = "TwoFace"; xcf.add(this) }
     }
     iosSimulatorArm64 {
-        binaries.framework { baseName = "TwoFace"; xcf.add(this) }
+        binaries.framework {
+            baseName = "TwoFace"
+            isStatic = true
+            xcf.add(this)
+        }
     }
     iosX64 {
-        binaries.framework { baseName = "TwoFace"; xcf.add(this) }
+        binaries.framework {
+            baseName = "TwoFace"
+            isStatic = true
+            xcf.add(this)
+        }
     }
 
     tvosArm64 {
