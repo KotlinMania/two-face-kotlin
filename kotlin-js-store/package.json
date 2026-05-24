@@ -3,5 +3,8 @@
   "private": true,
   "dependencies": {
     "webpack": "5.106.2"
+  },
+  "resolutions": {
+    "qs": "6.15.2"
   }
 }
