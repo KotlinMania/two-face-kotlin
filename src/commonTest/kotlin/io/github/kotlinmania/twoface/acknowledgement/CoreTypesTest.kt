@@ -48,12 +48,13 @@ class LicenseWriteMdTest {
         val license = License(LicenseType.Mit, "Permission text here.", "syntaxes/Rust/LICENSE.txt")
         val md = StringBuilder()
         license.writeMd(md)
-        val expected = "<details>\n" +
-            "<summary>syntaxes/Rust/LICENSE.txt</summary>\n\n" +
-            "````text\n" +
-            "Permission text here.\n" +
-            "````\n" +
-            "</details>\n\n"
+        val expected =
+            "<details>\n" +
+                "<summary>syntaxes/Rust/LICENSE.txt</summary>\n\n" +
+                "````text\n" +
+                "Permission text here.\n" +
+                "````\n" +
+                "</details>\n\n"
         assertEquals(expected, md.toString())
     }
 
@@ -72,9 +73,10 @@ class AcknowledgementsToMdTest {
     fun emptyAcknowledgementsProducesOnlyBatHeader() {
         val ack = Acknowledgements(forSyntaxes = emptyList(), forThemes = emptyList())
         val md = ack.toMd()
-        val expected = "Most of the code for generating both theme and syntax dumps along with the\n" +
-            "curation of said themes and syntaxes is taken from the\n" +
-            "[`bat` project](https://github.com/sharkdp/bat).\n"
+        val expected =
+            "Most of the code for generating both theme and syntax dumps along with the\n" +
+                "curation of said themes and syntaxes is taken from the\n" +
+                "[`bat` project](https://github.com/sharkdp/bat).\n"
         assertEquals(expected, md)
     }
 
@@ -102,10 +104,11 @@ class AcknowledgementsToMdTest {
     fun bothSectionsAppearInOrderSyntaxesBeforeThemes() {
         val syntaxLicense = License(LicenseType.Mit, "s-text", "syntaxes/A/LICENSE")
         val themeLicense = License(LicenseType.Mit, "t-text", "themes/A/LICENSE")
-        val ack = Acknowledgements(
-            forSyntaxes = listOf(syntaxLicense),
-            forThemes = listOf(themeLicense),
-        )
+        val ack =
+            Acknowledgements(
+                forSyntaxes = listOf(syntaxLicense),
+                forThemes = listOf(themeLicense),
+            )
         val md = ack.toMd()
         val syntaxIndex = md.indexOf("# Syntaxes")
         val themeIndex = md.indexOf("# Themes")
