@@ -70,7 +70,8 @@ enum class LicenseType {
     Apache2,
 
     /** [Do What The F*ck You Want To Public License](https://choosealicense.com/licenses/wtfpl/) */
-    Wtfpl;
+    Wtfpl,
+    ;
 
     /**
      * Whether or not the license requires acknowledgement
@@ -82,10 +83,11 @@ enum class LicenseType {
      * check(!LicenseType.Wtfpl.needsAcknowledgement())
      * ```
      */
-    fun needsAcknowledgement(): Boolean = when (this) {
-        Mit, Bsd2Clause, Bsd2ClauseFreeBsd, Bsd3Clause, Apache2 -> true
-        Sublime, Unlicense, Wtfpl -> false
-    }
+    fun needsAcknowledgement(): Boolean =
+        when (this) {
+            Mit, Bsd2Clause, Bsd2ClauseFreeBsd, Bsd3Clause, Apache2 -> true
+            Sublime, Unlicense, Wtfpl -> false
+        }
 }
 
 /** Holds all the license information for embedded syntaxes and themes */
