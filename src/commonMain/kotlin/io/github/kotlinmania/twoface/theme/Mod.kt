@@ -1,8 +1,105 @@
-// port-lint: source src/theme/mod.rs
+// port-lint: source theme/mod.rs
 package io.github.kotlinmania.twoface.theme
 
+/** Output type for theme index lookups. */
+typealias Output = Theme
+
 /**
- * An enum that represents all themes included in the embedded theme set.
+ * Returns an [EmbeddedLazyThemeSet] with popular theme definitions.
+ *
+ * These themes cover a variety of use-cases, so it's very likely that you'll only want to expose
+ * a subset or tweak the values for specific themes depending on your usage. E.g.
+ * `EmbeddedThemeName.Ansi`, `EmbeddedThemeName.Base16`, `EmbeddedThemeName.Base16256` are all terminal related themes,
+ * `EmbeddedThemeName.InspiredGithub` uses a full-white background which wouldn't be a good fit
+ * for a static site generator, etc.
+ *
+ * # Example
+ *
+ * ```
+ * val themeSet = extra()
+ * val nord = themeSet.get(EmbeddedThemeName.Nord)
+ * ```
+ */
+fun extra(): EmbeddedLazyThemeSet {
+    val themeMap =
+        EmbeddedThemeName.entries.associate { themeName ->
+            themeName.asName() to LazyTheme(theme = Theme(name = themeName.asName()))
+        }
+    return EmbeddedLazyThemeSet(LazyThemeSet(themeMap))
+}
+
+/**
+ * A [LazyThemeSet] where all included themes are known and enumerated.
+ */
+class EmbeddedLazyThemeSet(
+    val lazyThemeSet: LazyThemeSet = LazyThemeSet(),
+) {
+    /**
+     * Gets a single theme from the set.
+     *
+     * Infallible lookup for known embedded themes.
+     *
+     * # Example
+     *
+     * ```
+     * val themeSet = extra()
+     * val nord1 = themeSet.get(EmbeddedThemeName.Nord)
+     * val nord2 = themeSet.get(EmbeddedThemeName.Nord)
+     * ```
+     */
+    operator fun get(name: EmbeddedThemeName): Theme =
+        lazyThemeSet.get(name.asName()) ?: Theme(name = name.asName())
+
+    /**
+     * Index lookup method matching standard index trait.
+     */
+    fun index(themeName: EmbeddedThemeName): Theme = get(themeName)
+
+    /**
+     * Converts to underlying [LazyThemeSet].
+     */
+    fun toLazyThemeSet(): LazyThemeSet = lazyThemeSet
+
+    /**
+     * Converts to a [ThemeSet].
+     */
+    fun toThemeSet(): ThemeSet = lazyThemeSet.toThemeSet()
+
+    companion object {
+        /**
+         * A listing of all the themes included in [EmbeddedLazyThemeSet].
+         *
+         * # Example
+         *
+         * ```
+         * check(EmbeddedLazyThemeSet.themeNames().contains(EmbeddedThemeName.Nord))
+         * ```
+         */
+        fun themeNames(): List<EmbeddedThemeName> = EmbeddedThemeName.entries
+
+        /**
+         * Creates an [EmbeddedLazyThemeSet] from a [LazyThemeSet].
+         */
+        fun from(lazyThemeSet: LazyThemeSet): EmbeddedLazyThemeSet =
+            EmbeddedLazyThemeSet(lazyThemeSet)
+
+        /**
+         * Creates an [EmbeddedLazyThemeSet] from a [ThemeSet].
+         */
+        fun from(themeSet: ThemeSet): EmbeddedLazyThemeSet =
+            EmbeddedLazyThemeSet(LazyThemeSet.from(themeSet))
+    }
+}
+
+/**
+ * Converts an [EmbeddedLazyThemeSet] to a [LazyThemeSet].
+ */
+fun from(embedded: EmbeddedLazyThemeSet): LazyThemeSet = embedded.toLazyThemeSet()
+
+/**
+ * An enum that represents all themes included in [EmbeddedLazyThemeSet].
+ *
+ * A demo is included for how each theme highlights syntax.
  */
 enum class EmbeddedThemeName {
     /** ANSI */
@@ -24,7 +121,7 @@ enum class EmbeddedThemeName {
     Base16OceanLight,
 
     /** Base16 256 */
-    Base16_256,
+    Base16256,
 
     /** Catppuccin Frappe */
     CatppuccinFrappe,
@@ -115,7 +212,7 @@ enum class EmbeddedThemeName {
             Base16MochaDark -> "base16-mocha.dark"
             Base16OceanDark -> "base16-ocean.dark"
             Base16OceanLight -> "base16-ocean.light"
-            Base16_256 -> "base16-256"
+            Base16256 -> "base16-256"
             CatppuccinFrappe -> "Catppuccin Frappe"
             CatppuccinLatte -> "Catppuccin Latte"
             CatppuccinMacchiato -> "Catppuccin Macchiato"
@@ -142,6 +239,11 @@ enum class EmbeddedThemeName {
             TwoDark -> "TwoDark"
             Zenburn -> "zenburn"
         }
+
+    /**
+     * Formatted string output for theme name.
+     */
+    fun fmt(): String = asName()
 
     override fun toString(): String = asName()
 

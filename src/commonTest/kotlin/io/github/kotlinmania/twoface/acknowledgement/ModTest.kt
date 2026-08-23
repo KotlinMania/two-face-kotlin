@@ -1,8 +1,9 @@
-// port-lint: tests src/acknowledgement/mod.rs
+// port-lint: tests acknowledgement/mod.rs
 package io.github.kotlinmania.twoface.acknowledgement
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
 
 class ModTest {
     @Test
@@ -25,5 +26,11 @@ class ModTest {
 
         assertEquals(listOf(syntaxLic), ack.forSyntaxes())
         assertEquals(listOf(themeLic), ack.forThemes())
+    }
+
+    @Test
+    fun testListing() {
+        val ack = listing()
+        assertNotNull(ack)
     }
 }
