@@ -1,8 +1,9 @@
-// port-lint: tests src/theme/mod.rs
+// port-lint: tests theme/mod.rs
 package io.github.kotlinmania.twoface.theme
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
 
 class ModTest {
@@ -20,8 +21,34 @@ class ModTest {
         assertTrue(names.contains(EmbeddedThemeName.Nord))
         assertTrue(names.contains(EmbeddedThemeName.Dracula))
         assertTrue(names.contains(EmbeddedThemeName.Github))
+    }
 
-        val uniqueNames = names.map { it.asName() }.toSet()
-        assertEquals(32, uniqueNames.size)
+    @Test
+    fun themeSetRoundtrip() {
+        val embedded = extra()
+        val themeSet: ThemeSet = embedded.toThemeSet()
+        val lazy: LazyThemeSet = LazyThemeSet.from(themeSet)
+        val themeSetAgain: ThemeSet = lazy.toThemeSet()
+
+        assertEquals(themeSet.themes.keys, themeSetAgain.themes.keys)
+        for (key in themeSet.themes.keys) {
+            assertEquals(themeSet.themes[key], themeSetAgain.themes[key])
+        }
+    }
+
+    @Test
+    fun embeddedThemeIsExhaustive() {
+        val themeSet = extra()
+        for (themeName in EmbeddedThemeName.entries) {
+            val theme = themeSet.get(themeName)
+            assertNotNull(theme)
+            assertEquals(themeName.asName(), theme.name)
+        }
+
+        assertEquals(EmbeddedThemeName.entries.size, themeSet.lazyThemeSet.themes.size)
+        assertEquals(EmbeddedThemeName.entries.size, EmbeddedLazyThemeSet.themeNames().size)
+
+        val allUnique = EmbeddedLazyThemeSet.themeNames().toSet()
+        assertEquals(EmbeddedLazyThemeSet.themeNames().size, allUnique.size)
     }
 }

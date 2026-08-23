@@ -1,4 +1,4 @@
-// port-lint: source src/lib.rs
+// port-lint: source lib.rs
 package io.github.kotlinmania.twoface
 
 /**
@@ -7,3 +7,8 @@ package io.github.kotlinmania.twoface
 object TwoFace {
     const val VERSION: String = "0.5.1"
 }
+
+/**
+ * Marker for library documentation tests.
+ */
+class ReadmeDoctests

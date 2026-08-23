@@ -1,4 +1,4 @@
-// port-lint: source src/acknowledgement/core_types.rs
+// port-lint: source acknowledgement/core_types.rs
 package io.github.kotlinmania.twoface.acknowledgement
 
 import kotlinx.serialization.SerialName
@@ -57,7 +57,7 @@ enum class LicenseType {
     /** [BSD 2-Clause License](https://choosealicense.com/licenses/bsd-2-clause/) */
     Bsd2Clause,
 
-    // TODO: what is the distinction here from the other BSD 2-Clause license?
+    // FreeBSD variation of BSD 2-Clause license
     Bsd2ClauseFreeBsd,
 
     /** [The Unlicense](https://choosealicense.com/licenses/unlicense/) */
