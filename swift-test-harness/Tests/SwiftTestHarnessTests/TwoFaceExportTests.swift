@@ -1,4 +1,4 @@
-import XCTest
+import Testing
 import TwoFace
 
 // Smoke test for the Kotlin → Swift Export → SPM → swift test pipeline.
@@ -28,8 +28,10 @@ import TwoFace
 // Add more meaningful per-API tests below as the Swift Export surface
 // grows. For now the import + a single passing assertion is the
 // canary that the pipeline is green for this repo.
-final class TwoFaceExportTests: XCTestCase {
-    func testSwiftModuleLoads() throws {
-        XCTAssertTrue(true, "TwoFace swift module imported cleanly")
+@Suite
+struct TwoFaceExportTests {
+    @Test
+    func swiftModuleLoads() {
+        #expect(true, "TwoFace swift module imported cleanly")
     }
 }
