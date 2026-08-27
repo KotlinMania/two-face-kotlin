@@ -4,38 +4,35 @@ package io.github.kotlinmania.twoface.acknowledgement
 /**
  * Returns all of the acknowledgements specifically for embedded syntax definitions.
  */
-fun Acknowledgements.forSyntaxes(): List<License> {
-    return this.forSyntaxes
-}
+fun Acknowledgements.forSyntaxes(): List<License> = this.forSyntaxes
 
 /**
  * Returns all of the acknowledgements specifically for embedded theme definitions.
  */
-fun Acknowledgements.forThemes(): List<License> {
-    return this.forThemes
-}
+fun Acknowledgements.forThemes(): List<License> = this.forThemes
 
 /**
  * Returns all the [Acknowledgements] for embedded data.
  */
-fun listing(): Acknowledgements {
-    return Acknowledgements(
-        forSyntaxes = listOf(
-            License(
-                ty = LicenseType.Mit,
-                text = "Permission is hereby granted, free of charge, to any person obtaining a copy.",
-                relPath = "syntaxes/Packages/Rust/LICENSE.txt",
+fun listing(): Acknowledgements =
+    Acknowledgements(
+        forSyntaxes =
+            listOf(
+                License(
+                    ty = LicenseType.Mit,
+                    text = "Permission is hereby granted, free of charge, to any person obtaining a copy.",
+                    relPath = "syntaxes/Packages/Rust/LICENSE.txt",
+                ),
             ),
-        ),
-        forThemes = listOf(
-            License(
-                ty = LicenseType.Apache2,
-                text = "Licensed under the Apache License, Version 2.0.",
-                relPath = "themes/Nord/LICENSE.md",
+        forThemes =
+            listOf(
+                License(
+                    ty = LicenseType.Apache2,
+                    text = "Licensed under the Apache License, Version 2.0.",
+                    relPath = "themes/Nord/LICENSE.md",
+                ),
             ),
-        ),
     )
-}
 
 /**
  * Returns a link to a page listing acknowledgements for all syntax and theme definitions.
