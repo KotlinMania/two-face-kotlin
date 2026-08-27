@@ -1,4 +1,4 @@
-// port-lint: source two-face/src/theme/mod.rs
+// port-lint: source theme/mod.rs
 package io.github.kotlinmania.twoface.theme
 
 /** Output type for theme index lookups. */
@@ -28,9 +28,6 @@ fun extra(): EmbeddedLazyThemeSet {
     return EmbeddedLazyThemeSet(LazyThemeSet(themeMap))
 }
 
-/**
- * A [LazyThemeSet] where all included themes are known and enumerated.
- */
 class EmbeddedLazyThemeSet(
     val lazyThemeSet: LazyThemeSet = LazyThemeSet(),
 ) {
@@ -47,23 +44,30 @@ class EmbeddedLazyThemeSet(
      * val nord2 = themeSet.get(EmbeddedThemeName.Nord)
      * ```
      */
-    operator fun get(name: EmbeddedThemeName): Theme =
-        lazyThemeSet.get(name.asName()) ?: Theme(name = name.asName())
+    fun get(name: EmbeddedThemeName): Theme {
+        return lazyThemeSet.get(name.asName()) ?: Theme(name = name.asName())
+    }
 
     /**
      * Index lookup method matching standard index trait.
      */
-    fun index(themeName: EmbeddedThemeName): Theme = get(themeName)
+    fun index(themeName: EmbeddedThemeName): Theme {
+        return get(themeName)
+    }
 
     /**
      * Converts to underlying [LazyThemeSet].
      */
-    fun toLazyThemeSet(): LazyThemeSet = lazyThemeSet
+    fun toLazyThemeSet(): LazyThemeSet {
+        return lazyThemeSet
+    }
 
     /**
      * Converts to a [ThemeSet].
      */
-    fun toThemeSet(): ThemeSet = lazyThemeSet.toThemeSet()
+    fun toThemeSet(): ThemeSet {
+        return lazyThemeSet.toThemeSet()
+    }
 
     companion object {
         /**
@@ -75,26 +79,65 @@ class EmbeddedLazyThemeSet(
          * check(EmbeddedLazyThemeSet.themeNames().contains(EmbeddedThemeName.Nord))
          * ```
          */
-        fun themeNames(): List<EmbeddedThemeName> = EmbeddedThemeName.entries
+        fun themeNames(): List<EmbeddedThemeName> {
+            return listOf(
+                EmbeddedThemeName.Ansi,
+                EmbeddedThemeName.Base16,
+                EmbeddedThemeName.Base16EightiesDark,
+                EmbeddedThemeName.Base16MochaDark,
+                EmbeddedThemeName.Base16OceanDark,
+                EmbeddedThemeName.Base16OceanLight,
+                EmbeddedThemeName.Base16256,
+                EmbeddedThemeName.CatppuccinFrappe,
+                EmbeddedThemeName.CatppuccinLatte,
+                EmbeddedThemeName.CatppuccinMacchiato,
+                EmbeddedThemeName.CatppuccinMocha,
+                EmbeddedThemeName.ColdarkCold,
+                EmbeddedThemeName.ColdarkDark,
+                EmbeddedThemeName.DarkNeon,
+                EmbeddedThemeName.Dracula,
+                EmbeddedThemeName.Github,
+                EmbeddedThemeName.GruvboxDark,
+                EmbeddedThemeName.GruvboxLight,
+                EmbeddedThemeName.InspiredGithub,
+                EmbeddedThemeName.Leet,
+                EmbeddedThemeName.MonokaiExtended,
+                EmbeddedThemeName.MonokaiExtendedBright,
+                EmbeddedThemeName.MonokaiExtendedLight,
+                EmbeddedThemeName.MonokaiExtendedOrigin,
+                EmbeddedThemeName.Nord,
+                EmbeddedThemeName.OneHalfDark,
+                EmbeddedThemeName.OneHalfLight,
+                EmbeddedThemeName.SolarizedDark,
+                EmbeddedThemeName.SolarizedLight,
+                EmbeddedThemeName.SublimeSnazzy,
+                EmbeddedThemeName.TwoDark,
+                EmbeddedThemeName.Zenburn,
+            )
+        }
 
         /**
          * Creates an [EmbeddedLazyThemeSet] from a [LazyThemeSet].
          */
-        fun from(lazyThemeSet: LazyThemeSet): EmbeddedLazyThemeSet =
-            EmbeddedLazyThemeSet(lazyThemeSet)
+        fun from(lazyThemeSet: LazyThemeSet): EmbeddedLazyThemeSet {
+            return EmbeddedLazyThemeSet(lazyThemeSet)
+        }
 
         /**
          * Creates an [EmbeddedLazyThemeSet] from a [ThemeSet].
          */
-        fun from(themeSet: ThemeSet): EmbeddedLazyThemeSet =
-            EmbeddedLazyThemeSet(LazyThemeSet.from(themeSet))
+        fun from(themeSet: ThemeSet): EmbeddedLazyThemeSet {
+            return EmbeddedLazyThemeSet(LazyThemeSet.from(themeSet))
+        }
     }
 }
 
 /**
  * Converts an [EmbeddedLazyThemeSet] to a [LazyThemeSet].
  */
-fun from(embedded: EmbeddedLazyThemeSet): LazyThemeSet = embedded.toLazyThemeSet()
+fun from(embedded: EmbeddedLazyThemeSet): LazyThemeSet {
+    return embedded.toLazyThemeSet()
+}
 
 /**
  * An enum that represents all themes included in [EmbeddedLazyThemeSet].
