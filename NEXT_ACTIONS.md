@@ -8,9 +8,9 @@ Based on AST analysis, here are the concrete next steps.
 - **Function parity:** 23/23 matched (target 53) — 100.0%
 - **Class/type parity:** 9/9 matched (target 22) — 100.0%
 - **Combined symbol parity:** 32/32 matched (target 75) — 100.0%
-- **Average inline-code cosine:** 0.44 (function body across 4 matched files)
-- **Average documentation cosine:** 0.54 (doc text across 4 matched files)
-- **Cheat-zeroed Files:** 2
+- **Average inline-code cosine:** 0.43 (function body across 3 matched files)
+- **Average documentation cosine:** 0.69 (doc text across 3 matched files)
+- **Cheat-zeroed Files:** 3
 - **Critical Issues:** 5 files with <0.60 function similarity
 
 ## Priority 1: Fix Incomplete High-Dependency Files
@@ -72,7 +72,19 @@ Every matched file is listed below with function and type symbol parity.
 - **Types:** 0/0 matched (target 1)
 - **Missing types:** _none_
 
-### 5. syntax
+### 5. two-face.lib
+
+- **Target:** `twoface.Lib [STUB]`
+- **Similarity:** 0.00
+- **Dependents:** 0
+- **Priority Score:** 210.0
+- **Functions:** 1/1 matched (target 2)
+- **Missing functions:** _none_
+- **Types:** 1/1 matched (target 3)
+- **Missing types:** _none_
+- **Tests:** 1/1 matched
+
+### 6. two-face.syntax
 
 - **Target:** `syntax.Syntax`
 - **Similarity:** 0.22
@@ -82,18 +94,6 @@ Every matched file is listed below with function and type symbol parity.
 - **Missing functions:** _none_
 - **Types:** 0/0 matched (target 3)
 - **Missing types:** _none_
-
-### 6. lib
-
-- **Target:** `twoface.Lib`
-- **Similarity:** 0.46
-- **Dependents:** 0
-- **Priority Score:** 205.4
-- **Functions:** 1/1 matched (target 2)
-- **Missing functions:** _none_
-- **Types:** 1/1 matched (target 3)
-- **Missing types:** _none_
-- **Tests:** 1/1 matched
 
 ## Success Criteria
 

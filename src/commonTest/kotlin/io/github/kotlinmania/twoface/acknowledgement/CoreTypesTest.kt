@@ -1,4 +1,4 @@
-// port-lint: tests acknowledgement/core_types.rs
+// port-lint: tests two-face/src/acknowledgement/core_types.rs
 package io.github.kotlinmania.twoface.acknowledgement
 
 import kotlin.test.Test
