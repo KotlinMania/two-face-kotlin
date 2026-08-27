@@ -1,4 +1,4 @@
-// port-lint: source two-face/src/theme/core_types.rs
+// port-lint: source theme/core_types.rs
 package io.github.kotlinmania.twoface.theme
 
 /**

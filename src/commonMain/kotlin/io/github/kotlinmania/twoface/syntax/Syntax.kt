@@ -1,4 +1,4 @@
-// port-lint: source two-face/src/syntax.rs
+// port-lint: source syntax.rs
 package io.github.kotlinmania.twoface.syntax
 
 /**

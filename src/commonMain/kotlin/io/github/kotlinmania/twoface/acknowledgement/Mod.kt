@@ -1,35 +1,39 @@
-// port-lint: source two-face/src/acknowledgement/mod.rs
+// port-lint: source acknowledgement/mod.rs
 package io.github.kotlinmania.twoface.acknowledgement
 
 /**
  * Returns all of the acknowledgements specifically for embedded syntax definitions.
  */
-fun Acknowledgements.forSyntaxes(): List<License> = forSyntaxes
+fun Acknowledgements.forSyntaxes(): List<License> {
+    return this.forSyntaxes
+}
 
 /**
  * Returns all of the acknowledgements specifically for embedded theme definitions.
  */
-fun Acknowledgements.forThemes(): List<License> = forThemes
+fun Acknowledgements.forThemes(): List<License> {
+    return this.forThemes
+}
 
 /**
  * Returns all the [Acknowledgements] for embedded data.
  */
 fun listing(): Acknowledgements {
-    val syntaxLic =
-        License(
-            LicenseType.Mit,
-            "Permission is hereby granted, free of charge, to any person obtaining a copy.",
-            "syntaxes/Packages/Rust/LICENSE.txt",
-        )
-    val themeLic =
-        License(
-            LicenseType.Apache2,
-            "Licensed under the Apache License, Version 2.0.",
-            "themes/Nord/LICENSE.md",
-        )
     return Acknowledgements(
-        forSyntaxes = listOf(syntaxLic),
-        forThemes = listOf(themeLic),
+        forSyntaxes = listOf(
+            License(
+                ty = LicenseType.Mit,
+                text = "Permission is hereby granted, free of charge, to any person obtaining a copy.",
+                relPath = "syntaxes/Packages/Rust/LICENSE.txt",
+            ),
+        ),
+        forThemes = listOf(
+            License(
+                ty = LicenseType.Apache2,
+                text = "Licensed under the Apache License, Version 2.0.",
+                relPath = "themes/Nord/LICENSE.md",
+            ),
+        ),
     )
 }
 
