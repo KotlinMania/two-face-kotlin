@@ -1,4 +1,4 @@
-// port-lint: tests theme/mod.rs
+// port-lint: tests two-face/src/theme/mod.rs
 package io.github.kotlinmania.twoface.theme
 
 import kotlin.test.Test

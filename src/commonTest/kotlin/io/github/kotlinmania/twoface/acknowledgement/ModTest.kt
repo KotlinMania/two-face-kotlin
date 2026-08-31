@@ -1,4 +1,4 @@
-// port-lint: tests acknowledgement/mod.rs
+// port-lint: tests two-face/src/acknowledgement/mod.rs
 package io.github.kotlinmania.twoface.acknowledgement
 
 import kotlin.test.Test

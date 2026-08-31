@@ -1,4 +1,4 @@
-// port-lint: tests theme/core_types.rs
+// port-lint: tests two-face/src/theme/core_types.rs
 package io.github.kotlinmania.twoface.theme
 
 import kotlin.test.Test
