@@ -1,4 +1,4 @@
-// port-lint: tests two-face/src/lib.rs
+// port-lint: tests lib.rs
 package io.github.kotlinmania.twoface
 
 import io.github.kotlinmania.twoface.acknowledgement.listing

@@ -1,4 +1,4 @@
-// port-lint: source two-face/src/theme/mod.rs
+// port-lint: source theme/mod.rs
 package io.github.kotlinmania.twoface.theme
 
 /** Output type for theme index lookups. */
