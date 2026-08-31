@@ -1,4 +1,4 @@
-// port-lint: source lib.rs
+// port-lint: source two-face/src/lib.rs
 package io.github.kotlinmania.twoface
 
 /**
