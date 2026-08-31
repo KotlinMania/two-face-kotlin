@@ -5,12 +5,12 @@ Based on AST analysis, here are the concrete next steps.
 ## Summary
 
 - **Files Present:** 6/6 (100.0%)
-- **Function parity:** 23/23 matched (target 53) — 100.0%
-- **Class/type parity:** 9/9 matched (target 22) — 100.0%
-- **Combined symbol parity:** 32/32 matched (target 75) — 100.0%
+- **Function parity:** 10/10 matched (target 30) — 100.0%
+- **Class/type parity:** 6/6 matched (target 17) — 100.0%
+- **Combined symbol parity:** 16/16 matched (target 47) — 100.0%
 - **Average inline-code cosine:** 0.43 (function body across 3 matched files)
 - **Average documentation cosine:** 0.69 (doc text across 3 matched files)
-- **Cheat-zeroed Files:** 3
+- **Cheat-zeroed Files:** 1
 - **Critical Issues:** 5 files with <0.60 function similarity
 
 ## Priority 1: Fix Incomplete High-Dependency Files
@@ -27,21 +27,9 @@ No missing high-value files detected.
 
 Every matched file is listed below with function and type symbol parity.
 
-### 1. theme.mod
+### 1. theme.core_types
 
-- **Target:** `theme.Mod [STUB]`
-- **Similarity:** 0.00
-- **Dependents:** 0
-- **Priority Score:** 1210.0
-- **Functions:** 9/9 matched (target 16)
-- **Missing functions:** _none_
-- **Types:** 3/3 matched (target 4)
-- **Missing types:** _none_
-- **Tests:** 2/2 matched
-
-### 2. theme.core_types
-
-- **Target:** `theme.CoreTypes`
+- **Target:** `theme.CoreTypes [PROVENANCE-FALLBACK]`
 - **Similarity:** 0.26
 - **Dependents:** 0
 - **Priority Score:** 607.4
@@ -49,10 +37,15 @@ Every matched file is listed below with function and type symbol parity.
 - **Missing functions:** _none_
 - **Types:** 2/2 matched (target 5)
 - **Missing types:** _none_
+- **Provenance warning:** port-lint provenance header matched only after fallback normalization: `two-face/src/theme/core_types.rs` vs expected `theme/core_types.rs`
+- **Provenance warning:** port-lint provenance header matched only after fallback normalization: `tests:two-face/src/theme/core_types.rs` vs expected `theme/core_types.rs`
+- **Proposed provenance header:** `// port-lint: source theme/core_types.rs` (current: `// port-lint: source two-face/src/theme/core_types.rs`)
+- **Proposed provenance header:** `// port-lint: tests theme/core_types.rs` (current: `// port-lint: tests two-face/src/theme/core_types.rs`)
+- **Lint issues:** 2
 
-### 3. acknowledgement.core_types
+### 2. acknowledgement.core_types
 
-- **Target:** `acknowledgement.CoreTypes`
+- **Target:** `acknowledgement.CoreTypes [PROVENANCE-FALLBACK]`
 - **Similarity:** 0.79
 - **Dependents:** 0
 - **Priority Score:** 602.1
@@ -60,21 +53,15 @@ Every matched file is listed below with function and type symbol parity.
 - **Missing functions:** _none_
 - **Types:** 3/3 matched (target 6)
 - **Missing types:** _none_
+- **Provenance warning:** port-lint provenance header matched only after fallback normalization: `two-face/src/acknowledgement/core_types.rs` vs expected `acknowledgement/core_types.rs`
+- **Provenance warning:** port-lint provenance header matched only after fallback normalization: `tests:two-face/src/acknowledgement/core_types.rs` vs expected `acknowledgement/core_types.rs`
+- **Proposed provenance header:** `// port-lint: source acknowledgement/core_types.rs` (current: `// port-lint: source two-face/src/acknowledgement/core_types.rs`)
+- **Proposed provenance header:** `// port-lint: tests acknowledgement/core_types.rs` (current: `// port-lint: tests two-face/src/acknowledgement/core_types.rs`)
+- **Lint issues:** 2
 
-### 4. acknowledgement.mod
+### 3. lib
 
-- **Target:** `acknowledgement.Mod [STUB]`
-- **Similarity:** 0.00
-- **Dependents:** 0
-- **Priority Score:** 410.0
-- **Functions:** 4/4 matched (target 7)
-- **Missing functions:** _none_
-- **Types:** 0/0 matched (target 1)
-- **Missing types:** _none_
-
-### 5. two-face.lib
-
-- **Target:** `twoface.Lib [STUB]`
+- **Target:** `twoface.Lib [STUB] [PROVENANCE-FALLBACK]`
 - **Similarity:** 0.00
 - **Dependents:** 0
 - **Priority Score:** 210.0
@@ -83,10 +70,15 @@ Every matched file is listed below with function and type symbol parity.
 - **Types:** 1/1 matched (target 3)
 - **Missing types:** _none_
 - **Tests:** 1/1 matched
+- **Provenance warning:** port-lint provenance header matched only after fallback normalization: `two-face/src/lib.rs` vs expected `lib.rs`
+- **Provenance warning:** port-lint provenance header matched only after fallback normalization: `tests:two-face/src/lib.rs` vs expected `lib.rs`
+- **Proposed provenance header:** `// port-lint: source lib.rs` (current: `// port-lint: source two-face/src/lib.rs`)
+- **Proposed provenance header:** `// port-lint: tests lib.rs` (current: `// port-lint: tests two-face/src/lib.rs`)
+- **Lint issues:** 2
 
-### 6. two-face.syntax
+### 4. syntax
 
-- **Target:** `syntax.Syntax`
+- **Target:** `syntax.Syntax [PROVENANCE-FALLBACK]`
 - **Similarity:** 0.22
 - **Dependents:** 0
 - **Priority Score:** 207.8
@@ -94,6 +86,11 @@ Every matched file is listed below with function and type symbol parity.
 - **Missing functions:** _none_
 - **Types:** 0/0 matched (target 3)
 - **Missing types:** _none_
+- **Provenance warning:** port-lint provenance header matched only after fallback normalization: `two-face/src/syntax.rs` vs expected `syntax.rs`
+- **Provenance warning:** port-lint provenance header matched only after fallback normalization: `tests:two-face/src/syntax.rs` vs expected `syntax.rs`
+- **Proposed provenance header:** `// port-lint: source syntax.rs` (current: `// port-lint: source two-face/src/syntax.rs`)
+- **Proposed provenance header:** `// port-lint: tests syntax.rs` (current: `// port-lint: tests two-face/src/syntax.rs`)
+- **Lint issues:** 2
 
 ## Success Criteria
 
@@ -103,4 +100,18 @@ For each file to be considered "complete":
 - All tests ported
 - Documentation ported
 - port-lint header present
+
+## Reexport / Wiring Modules
+
+These files match `reexport_modules` patterns in `.ast_distance_config.json`. They are filtered out of
+normal priority and missing-file ladders because they are wiring
+modules, not direct logic ports. Consult them for call-site routing;
+do not treat them as the next implementation target by default.
+
+### Matched
+
+| Source | Target | Path |
+|--------|--------|------|
+| `theme.mod` | `theme.Mod` | `theme/mod` |
+| `acknowledgement.mod` | `acknowledgement.Mod` | `acknowledgement/mod` |
 
