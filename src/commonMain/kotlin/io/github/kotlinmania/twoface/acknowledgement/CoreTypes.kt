@@ -1,4 +1,4 @@
-// port-lint: source two-face/src/acknowledgement/core_types.rs
+// port-lint: source acknowledgement/core_types.rs
 package io.github.kotlinmania.twoface.acknowledgement
 
 import kotlinx.serialization.SerialName

@@ -1,4 +1,4 @@
-// port-lint: tests two-face/src/syntax.rs
+// port-lint: tests syntax.rs
 package io.github.kotlinmania.twoface.syntax
 
 import kotlin.test.Test
