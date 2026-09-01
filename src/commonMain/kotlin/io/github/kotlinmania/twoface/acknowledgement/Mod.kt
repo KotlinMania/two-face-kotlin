@@ -1,4 +1,4 @@
-// port-lint: source two-face/src/acknowledgement/mod.rs
+// port-lint: source acknowledgement/mod.rs
 package io.github.kotlinmania.twoface.acknowledgement
 
 /**
