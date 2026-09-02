@@ -29,7 +29,7 @@ Every matched file is listed below with function and type symbol parity.
 
 ### 1. theme.mod
 
-- **Target:** `theme.Mod [STUB] [PROVENANCE-FALLBACK]`
+- **Target:** `theme.Mod [STUB]`
 - **Similarity:** 0.00
 - **Dependents:** 0
 - **Priority Score:** 1210.0
@@ -38,15 +38,10 @@ Every matched file is listed below with function and type symbol parity.
 - **Types:** 3/3 matched (target 4)
 - **Missing types:** _none_
 - **Tests:** 2/2 matched
-- **Provenance warning:** port-lint provenance header matched only after fallback normalization: `theme/mod.rs` vs expected `theme/mod.rs`
-- **Provenance warning:** port-lint provenance header matched only after fallback normalization: `tests:theme/mod.rs` vs expected `theme/mod.rs`
-- **Proposed provenance header:** `// port-lint: source theme/mod.rs` (current: `// port-lint: source theme/mod.rs`)
-- **Proposed provenance header:** `// port-lint: tests theme/mod.rs` (current: `// port-lint: tests theme/mod.rs`)
-- **Lint issues:** 2
 
 ### 2. theme.core_types
 
-- **Target:** `theme.CoreTypes [PROVENANCE-FALLBACK]`
+- **Target:** `theme.CoreTypes`
 - **Similarity:** 0.26
 - **Dependents:** 0
 - **Priority Score:** 607.4
@@ -54,15 +49,10 @@ Every matched file is listed below with function and type symbol parity.
 - **Missing functions:** _none_
 - **Types:** 2/2 matched (target 5)
 - **Missing types:** _none_
-- **Provenance warning:** port-lint provenance header matched only after fallback normalization: `theme/core_types.rs` vs expected `theme/core_types.rs`
-- **Provenance warning:** port-lint provenance header matched only after fallback normalization: `tests:theme/core_types.rs` vs expected `theme/core_types.rs`
-- **Proposed provenance header:** `// port-lint: source theme/core_types.rs` (current: `// port-lint: source theme/core_types.rs`)
-- **Proposed provenance header:** `// port-lint: tests theme/core_types.rs` (current: `// port-lint: tests theme/core_types.rs`)
-- **Lint issues:** 2
 
 ### 3. acknowledgement.core_types
 
-- **Target:** `acknowledgement.CoreTypes [PROVENANCE-FALLBACK]`
+- **Target:** `acknowledgement.CoreTypes`
 - **Similarity:** 0.79
 - **Dependents:** 0
 - **Priority Score:** 602.1
@@ -70,15 +60,10 @@ Every matched file is listed below with function and type symbol parity.
 - **Missing functions:** _none_
 - **Types:** 3/3 matched (target 6)
 - **Missing types:** _none_
-- **Provenance warning:** port-lint provenance header matched only after fallback normalization: `acknowledgement/core_types.rs` vs expected `acknowledgement/core_types.rs`
-- **Provenance warning:** port-lint provenance header matched only after fallback normalization: `tests:acknowledgement/core_types.rs` vs expected `acknowledgement/core_types.rs`
-- **Proposed provenance header:** `// port-lint: source acknowledgement/core_types.rs` (current: `// port-lint: source acknowledgement/core_types.rs`)
-- **Proposed provenance header:** `// port-lint: tests acknowledgement/core_types.rs` (current: `// port-lint: tests acknowledgement/core_types.rs`)
-- **Lint issues:** 2
 
 ### 4. acknowledgement.mod
 
-- **Target:** `acknowledgement.Mod [STUB] [PROVENANCE-FALLBACK]`
+- **Target:** `acknowledgement.Mod [STUB]`
 - **Similarity:** 0.00
 - **Dependents:** 0
 - **Priority Score:** 410.0
@@ -86,15 +71,10 @@ Every matched file is listed below with function and type symbol parity.
 - **Missing functions:** _none_
 - **Types:** 0/0 matched (target 1)
 - **Missing types:** _none_
-- **Provenance warning:** port-lint provenance header matched only after fallback normalization: `acknowledgement/mod.rs` vs expected `acknowledgement/mod.rs`
-- **Provenance warning:** port-lint provenance header matched only after fallback normalization: `tests:acknowledgement/mod.rs` vs expected `acknowledgement/mod.rs`
-- **Proposed provenance header:** `// port-lint: source acknowledgement/mod.rs` (current: `// port-lint: source acknowledgement/mod.rs`)
-- **Proposed provenance header:** `// port-lint: tests acknowledgement/mod.rs` (current: `// port-lint: tests acknowledgement/mod.rs`)
-- **Lint issues:** 2
 
-### 5. two-face.syntax
+### 5. syntax
 
-- **Target:** `syntax.Syntax [PROVENANCE-FALLBACK]`
+- **Target:** `syntax.Syntax`
 - **Similarity:** 0.22
 - **Dependents:** 0
 - **Priority Score:** 207.8
@@ -102,11 +82,6 @@ Every matched file is listed below with function and type symbol parity.
 - **Missing functions:** _none_
 - **Types:** 0/0 matched (target 3)
 - **Missing types:** _none_
-- **Provenance warning:** port-lint provenance header matched only after fallback normalization: `syntax.rs` vs expected `syntax.rs`
-- **Provenance warning:** port-lint provenance header matched only after fallback normalization: `tests:syntax.rs` vs expected `syntax.rs`
-- **Proposed provenance header:** `// port-lint: source syntax.rs` (current: `// port-lint: source syntax.rs`)
-- **Proposed provenance header:** `// port-lint: tests syntax.rs` (current: `// port-lint: tests syntax.rs`)
-- **Lint issues:** 2
 
 ## Success Criteria
 
@@ -128,5 +103,5 @@ do not treat them as the next implementation target by default.
 
 | Source | Target | Path |
 |--------|--------|------|
-| `two-face.lib` | `twoface.Lib` | `two-face/src/lib` |
+| `lib` | `twoface.Lib` | `lib` |
 
