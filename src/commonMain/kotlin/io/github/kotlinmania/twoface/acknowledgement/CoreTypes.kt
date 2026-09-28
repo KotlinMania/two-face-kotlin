@@ -1,15 +1,11 @@
 // port-lint: source acknowledgement/core_types.rs
 package io.github.kotlinmania.twoface.acknowledgement
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
-
 /** Holds the license type, text, and relative path for a syntax or theme definition */
-@Serializable
 data class License(
     val ty: LicenseType,
     val text: String,
-    @SerialName("rel_path") val relPath: String,
+    val relPath: String,
 ) {
     /** Appends a section for this license to `md` */
     fun writeMd(md: StringBuilder) {
@@ -37,7 +33,6 @@ data class License(
  *
  * Disclaimer: I am not a lawyer
  */
-@Serializable
 enum class LicenseType {
     /**
      * Sublime's custom license
@@ -92,10 +87,9 @@ enum class LicenseType {
 
 /** Holds all the license information for embedded syntaxes and themes */
 @ConsistentCopyVisibility
-@Serializable
 data class Acknowledgements internal constructor(
-    @SerialName("for_syntaxes") internal val forSyntaxes: List<License>,
-    @SerialName("for_themes") internal val forThemes: List<License>,
+    internal val forSyntaxes: List<License>,
+    internal val forThemes: List<License>,
 ) {
     /**
      * Display the license information as Markdown
