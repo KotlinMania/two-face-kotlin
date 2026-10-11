@@ -5,13 +5,15 @@ Based on AST analysis, here are the concrete next steps.
 ## Summary
 
 - **Files Present:** 6/6 (100.0%)
-- **Function parity:** 22/22 matched (target 51) — 100.0%
+- **Function parity:** 25/29 matched (target 51) — 86.2%
 - **Class/type parity:** 8/8 matched (target 19) — 100.0%
-- **Combined symbol parity:** 30/30 matched (target 70) — 100.0%
-- **Average inline-code cosine:** 0.44 (function body across 4 matched files)
+- **Combined symbol parity:** 33/37 matched (target 70) — 89.2%
+- **Average inline-code cosine:** 0.14 (function body across 4 matched files)
 - **Average documentation cosine:** 0.54 (doc text across 4 matched files)
 - **Cheat-zeroed Files:** 2
-- **Critical Issues:** 5 files with <0.60 function similarity
+- **Critical Issues:** 6 files with <0.60 function similarity
+- **Needs Review:** 0 files with 0.60-0.84 function similarity
+- **Excellent:** 0 files with >=0.85 function similarity
 
 ## Priority 1: Fix Incomplete High-Dependency Files
 
@@ -27,36 +29,36 @@ No missing high-value files detected.
 
 Every matched file is listed below with function and type symbol parity.
 
-### 1. theme.mod
+### 1. theme.core_types
+
+- **Target:** `theme.CoreTypes`
+- **Similarity:** 0.04
+- **Dependents:** 0
+- **Priority Score:** 41009.6
+- **Functions:** 4/8 matched
+- **Missing functions:** `from`, `from`, `from`, `from`
+- **Types:** 2/2 matched (target 5)
+- **Missing types:** _none_
+
+### 2. theme.mod
 
 - **Target:** `theme.Mod [STUB]`
 - **Similarity:** 0.00
 - **Dependents:** 0
-- **Priority Score:** 1210.0
-- **Functions:** 9/9 matched (target 16)
+- **Priority Score:** 1410.0
+- **Functions:** 11/11 matched (target 16)
 - **Missing functions:** _none_
 - **Types:** 3/3 matched (target 4)
 - **Missing types:** _none_
 - **Tests:** 2/2 matched
 
-### 2. theme.core_types
-
-- **Target:** `theme.CoreTypes`
-- **Similarity:** 0.26
-- **Dependents:** 0
-- **Priority Score:** 607.4
-- **Functions:** 4/4 matched (target 8)
-- **Missing functions:** _none_
-- **Types:** 2/2 matched (target 5)
-- **Missing types:** _none_
-
 ### 3. acknowledgement.core_types
 
 - **Target:** `acknowledgement.CoreTypes`
-- **Similarity:** 0.79
+- **Similarity:** 0.26
 - **Dependents:** 0
-- **Priority Score:** 602.1
-- **Functions:** 3/3 matched (target 14)
+- **Priority Score:** 707.4
+- **Functions:** 4/4 matched (target 14)
 - **Missing functions:** _none_
 - **Types:** 3/3 matched (target 6)
 - **Missing types:** _none_
@@ -75,9 +77,9 @@ Every matched file is listed below with function and type symbol parity.
 ### 5. syntax
 
 - **Target:** `syntax.Syntax`
-- **Similarity:** 0.22
+- **Similarity:** 0.01
 - **Dependents:** 0
-- **Priority Score:** 207.8
+- **Priority Score:** 209.9
 - **Functions:** 2/2 matched (target 6)
 - **Missing functions:** _none_
 - **Types:** 0/0 matched (target 3)
