@@ -1,8 +1,4 @@
-// port-lint: source theme/mod.rs
 package io.github.kotlinmania.twoface.theme
-
-/** Output type for theme index lookups. */
-typealias Output = Theme
 
 /**
  * Returns an [EmbeddedLazyThemeSet] with popular theme definitions.
@@ -28,6 +24,9 @@ fun extra(): EmbeddedLazyThemeSet {
     return EmbeddedLazyThemeSet(LazyThemeSet(themeMap))
 }
 
+/**
+ * A [LazyThemeSet] where all of the included themes are known ahead of time.
+ */
 class EmbeddedLazyThemeSet(
     val lazyThemeSet: LazyThemeSet = LazyThemeSet(),
 ) {
@@ -45,6 +44,11 @@ class EmbeddedLazyThemeSet(
      * ```
      */
     fun get(name: EmbeddedThemeName): Theme = lazyThemeSet.get(name.asName()) ?: Theme(name = name.asName())
+
+    /**
+     * Index operator lookup matching standard indexing.
+     */
+    operator fun get(name: String): Theme? = lazyThemeSet.get(name)
 
     /**
      * Index lookup method matching standard index trait.
@@ -276,6 +280,11 @@ enum class EmbeddedThemeName {
     override fun toString(): String = asName()
 
     companion object {
+        /**
+         * Returns an iterator over all theme names.
+         */
+        fun iter(): Iterator<EmbeddedThemeName> = entries.iterator()
+
         /**
          * A listing of all the theme names.
          */

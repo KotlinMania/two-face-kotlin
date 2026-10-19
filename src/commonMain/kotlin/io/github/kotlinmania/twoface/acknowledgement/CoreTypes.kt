@@ -80,8 +80,16 @@ enum class LicenseType {
      */
     fun needsAcknowledgement(): Boolean =
         when (this) {
-            Mit, Bsd2Clause, Bsd2ClauseFreeBsd, Bsd3Clause, Apache2 -> true
-            Sublime, Unlicense, Wtfpl -> false
+            Mit,
+            Bsd2Clause,
+            Bsd2ClauseFreeBsd,
+            Bsd3Clause,
+            Apache2,
+            -> true
+            Sublime,
+            Unlicense,
+            Wtfpl,
+            -> false
         }
 }
 

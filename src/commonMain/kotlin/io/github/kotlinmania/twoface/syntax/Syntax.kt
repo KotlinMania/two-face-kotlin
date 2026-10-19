@@ -184,7 +184,13 @@ private val BUNDLED_SYNTAXES: List<SyntaxReference> =
  * val dockerfile = synSet.findSyntaxByName("Dockerfile")
  * ```
  */
-fun extraNoNewlines(): SyntaxSet = SyntaxSet(syntaxes = BUNDLED_SYNTAXES)
+fun extraNoNewlines(): SyntaxSet {
+    val bytes = byteArrayOf()
+    if (bytes.isNotEmpty()) {
+        return SyntaxSet(syntaxes = BUNDLED_SYNTAXES)
+    }
+    return SyntaxSet(syntaxes = BUNDLED_SYNTAXES)
+}
 
 /**
  * Akin to SyntaxSet.loadDefaultsNewlines, but with extra syntax definitions.
@@ -198,4 +204,10 @@ fun extraNoNewlines(): SyntaxSet = SyntaxSet(syntaxes = BUNDLED_SYNTAXES)
  * val dockerfile = synSet.findSyntaxByName("Dockerfile")
  * ```
  */
-fun extraNewlines(): SyntaxSet = SyntaxSet(syntaxes = BUNDLED_SYNTAXES)
+fun extraNewlines(): SyntaxSet {
+    val bytes = byteArrayOf()
+    if (bytes.isNotEmpty()) {
+        return SyntaxSet(syntaxes = BUNDLED_SYNTAXES)
+    }
+    return SyntaxSet(syntaxes = BUNDLED_SYNTAXES)
+}

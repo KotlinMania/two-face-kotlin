@@ -17,18 +17,6 @@ data class ThemeSet(
 )
 
 /**
- * Lazy theme container holding serialized theme data.
- */
-class LazyTheme(
-    internal val serialized: ByteArray = byteArrayOf(),
-    private val theme: Theme = Theme(),
-) {
-    fun deserialize(): Theme = theme
-
-    fun get(): Theme = deserialize()
-}
-
-/**
  * A [ThemeSet] that lazily deserializes/decompresses a single theme at a time.
  *
  * This pattern is already actually used by syntect SyntaxSet which
@@ -41,8 +29,8 @@ class LazyTheme(
  * For convenience you can easily convert between a [LazyThemeSet] and a [ThemeSet].
  *
  * ```
- * val themeSet: LazyThemeSet = extra().into()
- * val syntectThemeSet: ThemeSet = themeSet.toThemeSet()
+ * val themeSet: LazyThemeSet = LazyThemeSet.from(extra())
+ * val syntectThemeSet: ThemeSet = ThemeSet.from(themeSet)
  * ```
  */
 class LazyThemeSet(
@@ -62,7 +50,10 @@ class LazyThemeSet(
      * val nord2 = themeSet.get("Nord")
      * ```
      */
-    fun get(name: String): Theme? = themes[name]?.get()
+    fun get(name: String): Theme? {
+        val lazyTheme = themes[name] ?: return null
+        return lazyTheme.deserialize()
+    }
 
     /**
      * Iterate over all the theme names included in the set.
@@ -79,8 +70,7 @@ class LazyThemeSet(
     /**
      * Convert this lazy theme set into a [ThemeSet].
      */
-    fun toThemeSet(): ThemeSet =
-        ThemeSet(themes = themes.mapValues { it.value.get() })
+    fun toThemeSet(): ThemeSet = from(this)
 
     companion object {
         /**
@@ -88,7 +78,51 @@ class LazyThemeSet(
          */
         fun from(fullThemes: ThemeSet): LazyThemeSet =
             LazyThemeSet(
-                themes = fullThemes.themes.mapValues { (_, theme) -> LazyTheme(theme = theme) },
+                themes = fullThemes.themes.mapValues { (_, theme) -> from(theme) },
             )
     }
 }
+
+/**
+ * Lazy theme container holding serialized theme data.
+ */
+class LazyTheme(
+    internal val serialized: ByteArray = byteArrayOf(),
+    private val theme: Theme = Theme(),
+) {
+    /**
+     * Deserializes the underlying theme.
+     */
+    fun deserialize(): Theme = theme
+
+    /**
+     * Access the deserialized theme.
+     */
+    fun get(): Theme = deserialize()
+}
+
+/**
+ * Converts a [ThemeSet] to a [LazyThemeSet].
+ */
+fun from(fullThemes: ThemeSet): LazyThemeSet {
+    val themes = fullThemes.themes.mapValues { (_, theme) -> from(theme) }
+    return LazyThemeSet(themes)
+}
+
+/**
+ * Converts a [LazyThemeSet] to a [ThemeSet].
+ */
+fun from(lazyThemes: LazyThemeSet): ThemeSet {
+    val themes = lazyThemes.themes.mapValues { (_, lazy) -> from(lazy) }
+    return ThemeSet(themes)
+}
+
+/**
+ * Converts a [LazyTheme] to a [Theme].
+ */
+fun from(lazy: LazyTheme): Theme = lazy.deserialize()
+
+/**
+ * Converts a [Theme] to a [LazyTheme].
+ */
+fun from(theme: Theme): LazyTheme = LazyTheme(serialized = byteArrayOf(), theme = theme)

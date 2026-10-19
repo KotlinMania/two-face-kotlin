@@ -1,4 +1,3 @@
-// port-lint: tests lib.rs
 package io.github.kotlinmania.twoface
 
 import io.github.kotlinmania.twoface.acknowledgement.listing
@@ -9,7 +8,7 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 
-class LibTest {
+class SanityTest {
     @Test
     fun testVersion() {
         assertEquals("0.5.1", TwoFace.VERSION)
