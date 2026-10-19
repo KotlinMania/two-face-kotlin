@@ -4,16 +4,14 @@ Based on AST analysis, here are the concrete next steps.
 
 ## Summary
 
-- **Files Present:** 6/6 (100.0%)
-- **Function parity:** 25/29 matched (target 51) — 86.2%
-- **Class/type parity:** 8/8 matched (target 19) — 100.0%
-- **Combined symbol parity:** 33/37 matched (target 70) — 89.2%
-- **Average inline-code cosine:** 0.14 (function body across 4 matched files)
-- **Average documentation cosine:** 0.54 (doc text across 4 matched files)
-- **Cheat-zeroed Files:** 2
-- **Critical Issues:** 6 files with <0.60 function similarity
-- **Needs Review:** 0 files with 0.60-0.84 function similarity
-- **Excellent:** 0 files with >=0.85 function similarity
+- **Files Present:** 3/6 (50.0%)
+- **Function parity:** 9/9 matched (target 32) — 100.0%
+- **Class/type parity:** 5/5 matched (target 14) — 100.0%
+- **Combined symbol parity:** 14/14 matched (target 46) — 100.0%
+- **Average inline-code cosine:** 0.62 (function body across 3 matched files)
+- **Average documentation cosine:** 0.70 (doc text across 3 matched files)
+- **Cheat-zeroed Files:** 0
+- **Critical Issues:** 1 files with <0.60 function similarity
 
 ## Priority 1: Fix Incomplete High-Dependency Files
 
@@ -32,54 +30,31 @@ Every matched file is listed below with function and type symbol parity.
 ### 1. theme.core_types
 
 - **Target:** `theme.CoreTypes`
-- **Similarity:** 0.04
+- **Similarity:** 0.65
 - **Dependents:** 0
-- **Priority Score:** 41009.6
-- **Functions:** 4/8 matched
-- **Missing functions:** `from`, `from`, `from`, `from`
+- **Priority Score:** 603.5
+- **Functions:** 4/4 matched (target 12)
+- **Missing functions:** _none_
 - **Types:** 2/2 matched (target 5)
 - **Missing types:** _none_
 
-### 2. theme.mod
-
-- **Target:** `theme.Mod [STUB]`
-- **Similarity:** 0.00
-- **Dependents:** 0
-- **Priority Score:** 1410.0
-- **Functions:** 11/11 matched (target 16)
-- **Missing functions:** _none_
-- **Types:** 3/3 matched (target 4)
-- **Missing types:** _none_
-- **Tests:** 2/2 matched
-
-### 3. acknowledgement.core_types
+### 2. acknowledgement.core_types
 
 - **Target:** `acknowledgement.CoreTypes`
-- **Similarity:** 0.26
+- **Similarity:** 0.79
 - **Dependents:** 0
-- **Priority Score:** 707.4
-- **Functions:** 4/4 matched (target 14)
+- **Priority Score:** 602.1
+- **Functions:** 3/3 matched (target 14)
 - **Missing functions:** _none_
 - **Types:** 3/3 matched (target 6)
 - **Missing types:** _none_
 
-### 4. acknowledgement.mod
-
-- **Target:** `acknowledgement.Mod [STUB]`
-- **Similarity:** 0.00
-- **Dependents:** 0
-- **Priority Score:** 410.0
-- **Functions:** 4/4 matched (target 7)
-- **Missing functions:** _none_
-- **Types:** 0/0 matched (target 1)
-- **Missing types:** _none_
-
-### 5. syntax
+### 3. syntax
 
 - **Target:** `syntax.Syntax`
-- **Similarity:** 0.01
+- **Similarity:** 0.43
 - **Dependents:** 0
-- **Priority Score:** 209.9
+- **Priority Score:** 205.7
 - **Functions:** 2/2 matched (target 6)
 - **Missing functions:** _none_
 - **Types:** 0/0 matched (target 3)
@@ -101,9 +76,11 @@ normal priority and missing-file ladders because they are wiring
 modules, not direct logic ports. Consult them for call-site routing;
 do not treat them as the next implementation target by default.
 
-### Matched
+### Missing
 
-| Source | Target | Path |
-|--------|--------|------|
-| `lib` | `twoface.Lib` | `lib` |
+| Source | Expected target | Deps | Source path | Expected path |
+|--------|-----------------|------|-------------|---------------|
+| `acknowledgement.mod` | `acknowledgement.Mod` | 0 | `acknowledgement/mod.rs` | `acknowledgement/Mod.kt` |
+| `lib` | `Lib` | 0 | `lib.rs` | `Lib.kt` |
+| `theme.mod` | `theme.Mod` | 0 | `theme/mod.rs` | `theme/Mod.kt` |
 

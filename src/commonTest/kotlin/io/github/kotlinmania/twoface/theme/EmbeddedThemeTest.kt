@@ -1,4 +1,3 @@
-// port-lint: tests theme/mod.rs
 package io.github.kotlinmania.twoface.theme
 
 import kotlin.test.Test
@@ -6,7 +5,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
 
-class ModTest {
+class EmbeddedThemeTest {
     @Test
     fun testEmbeddedThemeNames() {
         assertEquals("1337", EmbeddedThemeName.Leet.asName())
@@ -39,11 +38,16 @@ class ModTest {
     @Test
     fun embeddedThemeIsExhaustive() {
         val themeSet = extra()
-        for (themeName in EmbeddedThemeName.entries) {
+        var count = 0
+        val iterator = EmbeddedThemeName.iter()
+        while (iterator.hasNext()) {
+            val themeName = iterator.next()
             val theme = themeSet.get(themeName)
             assertNotNull(theme)
             assertEquals(themeName.asName(), theme.name)
+            count++
         }
+        assertEquals(EmbeddedThemeName.entries.size, count)
 
         assertEquals(EmbeddedThemeName.entries.size, themeSet.lazyThemeSet.themes.size)
         assertEquals(EmbeddedThemeName.entries.size, EmbeddedLazyThemeSet.themeNames().size)

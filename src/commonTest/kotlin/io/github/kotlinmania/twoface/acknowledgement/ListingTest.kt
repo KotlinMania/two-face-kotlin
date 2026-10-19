@@ -1,11 +1,10 @@
-// port-lint: tests acknowledgement/mod.rs
 package io.github.kotlinmania.twoface.acknowledgement
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 
-class ModTest {
+class ListingTest {
     @Test
     fun testUrl() {
         assertEquals(
