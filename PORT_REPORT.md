@@ -1,4 +1,4 @@
-=== Deep Analysis: tmp/two-face/src (rust) -> src/commonMain/kotlin (kotlin) ===
+=== Deep Analysis: tmp/two-face/src (rust) -> src/common/commonMain/kotlin (kotlin) ===
 
 Scanning source codebase (rust)...
 Codebase: tmp/two-face/src (rust)
@@ -6,7 +6,7 @@ Codebase: tmp/two-face/src (rust)
   Total imports: 14
 
 Scanning target codebase (kotlin)...
-Codebase: src/commonMain/kotlin (kotlin)
+Codebase: src/common/commonMain/kotlin (kotlin)
   Files: 12
   Total imports: 27
 
@@ -16,7 +16,7 @@ Computing AST similarities...
 === Codebase Comparison Report ===
 
 Source: tmp/two-face/src (6 files)
-Target: src/commonMain/kotlin (12 files)
+Target: src/common/commonMain/kotlin (12 files)
 Scoring invariant: FnSim is required function body/parameter similarity. Class/type and symbol parity are reported beside it; whole-file shape is diagnostic only.
 
 Matched:   6 files
