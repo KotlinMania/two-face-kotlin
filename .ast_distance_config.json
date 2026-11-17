@@ -6,7 +6,7 @@
     "lang": "rust"
   },
   "target": {
-    "path": "src/commonMain/kotlin/io/github/kotlinmania/twoface",
+    "path": "src/common/commonMain/kotlin/io/github/kotlinmania/twoface",
     "lang": "kotlin"
   },
   "checks": {
