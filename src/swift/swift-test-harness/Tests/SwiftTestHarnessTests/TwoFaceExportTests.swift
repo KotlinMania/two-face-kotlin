@@ -31,7 +31,18 @@ import TwoFace
 @Suite
 struct TwoFaceExportTests {
     @Test
-    func swiftModuleLoads() {
-        #expect(true, "TwoFace swift module imported cleanly")
+    func embeddedThemesAndAcknowledgementsWork() {
+        #expect(TwoFace.shared.VERSION == "0.5.1")
+
+        let themes = theme.extra()
+        let nord = themes.get(name: theme.EmbeddedThemeName.Nord)
+        #expect(!(nord.name ?? "").isEmpty)
+
+        let url = acknowledgement.url(version: "0.5.1")
+        #expect(url.contains("v0.5.1/generated/acknowledgements_full.md"))
+
+        let list = acknowledgement.listing()
+        #expect(!acknowledgement.forSyntaxes(list).isEmpty)
+        #expect(!acknowledgement.forThemes(list).isEmpty)
     }
 }
